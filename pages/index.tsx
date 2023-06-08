@@ -25,7 +25,7 @@ export default function Home() {
   }>({
     messages: [
       {
-        message: 'Hi, what would you like to learn about this document?',
+        message: '嗨，关于这份文件，你想了解些什么?',
         type: 'apiMessage',
       },
     ],
@@ -209,7 +209,7 @@ export default function Home() {
                 })}
               </div>
             </div>
-            <div className={styles.center}>
+            <div className={styles.center}  key="centerDiv">
               <div className={styles.cloudform}>
                 <form onSubmit={handleSubmit}>
                   <textarea

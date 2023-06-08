@@ -2,3 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+    font-family: Arial, sans-serif; /* 你可以将 'Arial, sans-serif' 替换为你想使用的任何默认字体 */
+}
