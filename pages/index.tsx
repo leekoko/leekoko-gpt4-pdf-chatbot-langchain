@@ -121,7 +121,7 @@ export default function Home() {
   };
 
   return (
-    <>
+      <>
       <Layout>
         <div className="mx-auto flex flex-col gap-4">
           <h1 className="text-2xl font-bold leading-[1.1] tracking-tighter text-center">
@@ -135,75 +135,74 @@ export default function Home() {
                   let className;
                   if (message.type === 'apiMessage') {
                     icon = (
-                      <Image
-                        key={index}
-                        src="/bot-image.png"
-                        alt="AI"
-                        width="40"
-                        height="40"
-                        className={styles.boticon}
-                        priority
-                      />
+                        <Image
+                            key={`apiMessageIcon-${index}`}
+                            src="/bot-image.png"
+                            alt="AI"
+                            width="40"
+                            height="40"
+                            className={styles.boticon}
+                            priority
+                        />
                     );
                     className = styles.apimessage;
                   } else {
                     icon = (
-                      <Image
-                        key={index}
-                        src="/usericon.png"
-                        alt="Me"
-                        width="30"
-                        height="30"
-                        className={styles.usericon}
-                        priority
-                      />
+                        <Image
+                            key={`userMessageIcon-${index}`}
+                            src="/usericon.png"
+                            alt="Me"
+                            width="30"
+                            height="30"
+                            className={styles.usericon}
+                            priority
+                        />
                     );
-                    // The latest message sent by the user will be animated while waiting for a response
                     className =
-                      loading && index === messages.length - 1
-                        ? styles.usermessagewaiting
-                        : styles.usermessage;
+                        loading && index === messages.length - 1
+                            ? styles.usermessagewaiting
+                            : styles.usermessage;
                   }
                   return (
-                    <>
+                      <>
                       <div key={`chatMessage-${index}`} className={className}>
-                        {icon}
-                        <div className={styles.markdownanswer}>
-                          <ReactMarkdown linkTarget="_blank">
-                            {message.message}
-                          </ReactMarkdown>
+                          {icon}
+                          <div className={styles.markdownanswer}>
+                            <ReactMarkdown linkTarget="_blank">
+                              {message.message}
+                            </ReactMarkdown>
+                          </div>
                         </div>
-                      </div>
-                      {message.sourceDocs && (
-                        <div
-                          className="p-5"
-                          key={`sourceDocsAccordion-${index}`}
-                        >
-                          <Accordion
-                            type="single"
-                            collapsible
-                            className="flex-col"
-                          >
-                            {message.sourceDocs.map((doc, index) => (
-                              <div key={`messageSourceDocs-${index}`}>
-                                <AccordionItem value={`item-${index}`}>
-                                  <AccordionTrigger>
-                                    <h3>Source {index + 1}</h3>
-                                  </AccordionTrigger>
-                                  <AccordionContent>
-                                    <ReactMarkdown linkTarget="_blank">
-                                      {doc.pageContent}
-                                    </ReactMarkdown>
-                                    <p className="mt-2">
-                                      <b>Source:</b> {doc.metadata.source}
-                                    </p>
-                                  </AccordionContent>
-                                </AccordionItem>
-                              </div>
-                            ))}
-                          </Accordion>
-                        </div>
-                      )}
+                        {message.sourceDocs && (
+                            <div
+                                className="p-5"
+                                key={`sourceDocsAccordion-${index}`}
+                            >
+                              <Accordion
+                                  type="single"
+                                  collapsible
+                                  className="flex-col"
+                              >
+                                {message.sourceDocs.map((doc, docIndex) => (
+                                    <div key={`messageSourceDocs-${docIndex}`}>
+                                      <AccordionItem value={`item-${docIndex}`}>
+                                        <AccordionTrigger>
+                                          <h3>Source {docIndex + 1}</h3>
+                                        </AccordionTrigger>
+                                        <AccordionContent>
+                                          <ReactMarkdown linkTarget="_blank">
+                                            {doc.pageContent}
+                                          </ReactMarkdown>
+                                          <p className="mt-2">
+                                            <b>Source:</b> {doc.metadata.source}
+                                          </p>
+                                        </AccordionContent>
+                                      </AccordionItem>
+                                    </div>
+                                ))}
+                              </Accordion>
+                            </div>
+                        )}
                     </>
                   );
                 })}
@@ -266,6 +265,6 @@ export default function Home() {
           </a>
         </footer>
       </Layout>
-    </>
+      </>
   );
 }
