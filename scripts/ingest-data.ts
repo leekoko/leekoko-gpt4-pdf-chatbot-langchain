@@ -11,7 +11,7 @@ const filePath = 'docs';
 const processedPath = 'processed'; // Directory to store processed file records
 
 
-async function loadDocumentsFromDirectory(directoryPath) {
+async function loadDocumentsFromDirectory(directoryPath: fs.PathLike) {
   // Read all files in the directory
   const files = await fs.promises.readdir(directoryPath);
   const rawDocs = [];
